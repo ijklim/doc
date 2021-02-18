@@ -6,8 +6,11 @@
 * Change permission of folder `/storage/logs`
 
   ```sh
-  sudo chmod -R 777 /var/www/<name_of_repo>/storage
+  repoRoot=$(pwd)
+  sudo chmod -R 777 $repoRoot/storage
   ```
+
+* Note: 755 or 775 do not work
 
 
 ## Error 'The /var/www/<name_of_repo>/bootstrap/cache directory must be present and writable.'
@@ -24,18 +27,14 @@
 * php version 7.4+ is required, 7.3 produces that error
 
 
-## Error '419 | Page Expired' during login (not solved yet)
+## Error '419 | Page Expired' during login (possible solutions)
 
-* Ref: https://stackoverflow.com/questions/57766042/419-page-expired-laravel-5-8-after-login
+* Quite likely exception is also thrown 'CSRF token mismatch.'
 
-* Check permission
+* Checking request header, 'x-xsrf-token' header should be sent
 
-  ```sh
-  ls -la /var/www/admin.askthelawyers.com/bootstrap
-  ls -la /var/www/admin.askthelawyers.com/bootstrap/cache
-  chmod -R 777 /var/www/admin.askthelawyers.com/bootstrap/cache # Does not solve
+* Clear cache of browser
 
-  # Compare
-  ls -la /var/www/atl_public_web2021/bootstrap
+* Set `.env::SESSION_DRIVER=file`
 
-  ```
+* Set `.env::SESSION_DOMAIN=dev-admin.askthelawyers.com`
