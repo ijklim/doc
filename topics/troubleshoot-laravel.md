@@ -19,12 +19,12 @@
   ```
 
 
-### The server requested authentication method unknown to the client
+## The server requested authentication method unknown to the client
 
 * php version 7.4+ is required, 7.3 produces that error
 
 
-### Error '419 | Page Expired' during login (not solved yet)
+## Error '419 | Page Expired' during login (not solved yet)
 
 * Ref: https://stackoverflow.com/questions/57766042/419-page-expired-laravel-5-8-after-login
 
