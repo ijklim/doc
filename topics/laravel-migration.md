@@ -1,5 +1,7 @@
 # Laravel Migration Script Methods
 
+* Doc: https://laravel.com/docs/8.x/migrations
+
 ```php
 // === Table Creation ===
 class CreateMySamplesTable extends Migration

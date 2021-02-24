@@ -4,4 +4,6 @@
 
 * <a href="./topics/troubleshoot-laravel.md">Laravel Troubleshooting Guide</a>
 
+* <a href="./topics/sql.md">SQL Commands</a>
+
 * <a href="./topics/unit-commands.md">Unix Commands</a>
