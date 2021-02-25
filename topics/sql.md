@@ -26,3 +26,10 @@
     AND table1.id = table2.id
   ;
   ```
+
+# Find max length of data in a column
+
+  ```sql
+  SELECT MAX(LENGTH(__columnName__))
+  FROM __tableName__;
+  ```
