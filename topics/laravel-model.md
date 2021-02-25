@@ -2,6 +2,10 @@
 
 * Doc: https://laravel.com/docs/8.x/eloquent
 
+* Command to create migration script with model: `php artisan make:model MySample -m`
+
+  * Add `-f` to create a factory class as well
+
 ```php
 namespace App\Models;
 

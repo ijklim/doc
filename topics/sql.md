@@ -1,11 +1,22 @@
-# Find table with a specific column name
+# Setting variables
 
   ```sql
   SET
     @columnName = '',
-    @databaseName = ''
+    @databaseName = '',
+    @tableName = ''
   ;
+  ```
 
+# Tables in a database
+
+  ```sql
+  SELECT TABLE_NAME FROM information_schema.tables
+  WHERE TABLE_SCHEMA = @databaseName;
+  ```
+# Find all tables with a specific column name
+
+  ```sql
   SELECT DISTINCT TABLE_NAME
   FROM INFORMATION_SCHEMA.COLUMNS
   WHERE 1
@@ -30,6 +41,6 @@
 # Find max length of data in a column
 
   ```sql
-  SELECT MAX(LENGTH(__columnName__))
-  FROM __tableName__;
+  SELECT MAX(LENGTH(@columnName))
+  FROM @tableName;
   ```

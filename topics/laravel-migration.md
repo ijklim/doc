@@ -2,11 +2,7 @@
 
 * Migration Doc: https://laravel.com/docs/8.x/migrations
 
-* Model Doc: https://laravel.com/docs/8.x/eloquent
-
-* Command to create migration script with model: `php artisan make:model MySample -m`
-
-  * Add `-f` to create a factory class as well
+* Command to create migration script: `php artisan make:migration create_my_samples_table`
 
 ```php
 // === Table Creation ===
