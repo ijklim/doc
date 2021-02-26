@@ -4,6 +4,8 @@
 
 * <a href="./topics/laravel-model.md">Laravel Model</a>
 
+* <a href="./topics/laravel-seeder.md">Laravel Seeder</a>
+
 * <a href="./topics/troubleshoot-laravel.md">Laravel Troubleshooting Guide</a>
 
 * <a href="./topics/sql.md">SQL Commands</a>
