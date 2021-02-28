@@ -1,8 +1,36 @@
-# Laravel Migration Script Methods
+# Laravel Seeder
 
 * Migration Doc: https://laravel.com/docs/8.x/seeding
 
 * Command to create seeder script: `php artisan make:seeder RegionSeeder`
+
+* Create trait `app\Http\Traits\SeederTrait.php`
+
+```php
+namespace App\Http\Traits;
+
+trait SeederTrait
+{
+    /**
+     * Extract table name from seeder class name
+     */
+    private function getTableName()
+    {
+        // Remove 'Seeder' from back of class name, add 's' to the end
+        $className = basename(__CLASS__);
+        return \Str::snake(substr($className, 0, strlen($className) - strlen('Seeder'))) . 's';
+    }
+
+    /**
+     * Delete all data from a table
+     */
+    private function deleteTable()
+    {
+        \DB::delete("DELETE FROM " . $this->getTableName());
+        \DB::statement("ALTER TABLE " . $this->getTableName() . " AUTO_INCREMENT = 1;");
+    }
+}
+```
 
 ```php
 namespace Database\Seeders;
@@ -13,9 +41,10 @@ class RegionSeeder extends Seeder
 {
     public function run()
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        \App\Models\Region::truncate();
-        \DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        echo "=== " . basename(__CLASS__) . " ===\n";
+
+        echo "• Clearing old data\n";
+        $this->deleteTable();
 
         $seeds = [
             ['Alabama', 'AL'],
@@ -25,6 +54,8 @@ class RegionSeeder extends Seeder
         foreach ($seeds as $seed) {
             \App\Models\Region::insert(self::addFieldNames($seed));
         }
+        echo "• Populated Regions: " . count($seeds) . "\n";
+
     }
 
     public static function addFieldNames($dataArray)

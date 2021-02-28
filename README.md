@@ -10,4 +10,6 @@
 
 * <a href="./topics/sql.md">SQL Commands</a>
 
-* <a href="./topics/unit-commands.md">Unix Commands</a>
+* <a href="./topics/ssh.md">SSH (Secure Shell)</a>
+
+* <a href="./topics/unix-commands.md">Unix Commands</a>
