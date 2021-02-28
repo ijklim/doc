@@ -15,7 +15,9 @@
   ssh-add ~/.ssh/id_ed25519
   ```
 
-* Configure SSH connection via `~/.ssh/config`, these are the keys used by the server to connect to external servers such as github
+* Configure SSH connection via `~/.ssh/config`, these are the preset keys used by the local machine or server to connect to external servers such as github
+
+  * Note: This will replace the need to run `eval $(ssh-agent -s)` and `ssh-add ~/.ssh/...`
 
   ```
   Host www.example.com
