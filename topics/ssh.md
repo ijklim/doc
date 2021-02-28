@@ -15,15 +15,22 @@
   ssh-add ~/.ssh/id_ed25519
   ```
 
-* Configure SSH connection via `~/.ssh/config`
+* Configure SSH connection via `~/.ssh/config`, these are the keys used by the server to connect to external servers such as github
 
   ```
   Host www.example.com
     IdentityFile ~/.ssh/id_ed25519
 
-  Host www.sample.com
+  Host github.com
     IdentityFile ~/.ssh/id_rsa
   ```
+
+  * If different keys are used to connect to the same server, set up aliases (e.g. me.github.com) in hosts file and change the remote path
+
+    ```sh
+    git remote -v
+    git remote set-url origin git@me.github.com:ijklim/repo-name.git
+    ```
 
 * Establishing SSH connection
 

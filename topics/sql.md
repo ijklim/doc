@@ -1,4 +1,6 @@
-# Setting variables
+# SQL Commands
+
+## Setting variables
 
   ```sql
   SET
@@ -8,13 +10,13 @@
   ;
   ```
 
-# Tables in a database
+## Tables in a database
 
   ```sql
   SELECT TABLE_NAME FROM information_schema.tables
   WHERE TABLE_SCHEMA = @databaseName;
   ```
-# Find all tables with a specific column name
+## Find all tables with a specific column name
 
   ```sql
   SELECT DISTINCT TABLE_NAME
@@ -25,7 +27,7 @@
   ;
   ```
 
-# Update based on another table
+## Update based on another table
 
   ```sql
   -- MySQL
@@ -38,7 +40,7 @@
   ;
   ```
 
-# Find max length of data in a column
+## Find max length of data in a column
 
   ```sql
   SELECT MAX(LENGTH(@columnName))

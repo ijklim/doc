@@ -1,4 +1,4 @@
-# Common Unix Commands
+# Unix Commands
 
 ```sh
 # Check OS
