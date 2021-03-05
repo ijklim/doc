@@ -4,6 +4,8 @@
 
 * Command to create migration script: `php artisan make:migration create_my_samples_table`
 
+* To re-create database from scratch: `php artisan migrate:refresh`
+
 * Create trait `app\Http\Traits\MigrationTrait.php`
 
 ```php
@@ -18,6 +20,18 @@ trait MigrationTrait
     {
         // Remove 'Create' from front and 'Table' at back of class name
         return \Str::snake(substr(__CLASS__, strlen('Create'), strlen(__CLASS__) - strlen('CreateTable')));
+    }
+
+    /**
+     * Add table level comment
+     */
+    private function addTableComment($comment)
+    {
+        $sql = "
+            ALTER TABLE " . $this->getTableName() . "
+            COMMENT '$comment';
+        ";
+        \DB::unprepared($sql);
     }
 }
 ```

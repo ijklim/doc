@@ -4,6 +4,10 @@
 
 * Command to create seeder script: `php artisan make:seeder RegionSeeder`
 
+* To run all seeders defined in `database/seeders/DatabaseSeeder.php`: `php artisan db:seed`
+
+* To run individual seeder: `php artisan db:seed --class=RegionSeeder`
+
 * Create trait `app\Http\Traits\SeederTrait.php`
 
 ```php

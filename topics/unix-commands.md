@@ -17,5 +17,7 @@ ls -la /var/www
 # Find extension folder
 php -i | grep extension_dir
 
-
+# Show ip address of client connecting to server via SSH
+echo $SSH_CLIENT
+echo $SSH_CONNECTION
 ```

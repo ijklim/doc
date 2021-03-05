@@ -5,8 +5,9 @@
   ```sh
   # Depends on whether the Ed25519 algorithm is supported
   # Connecting to github, email must match github email account
-  # Files should be generated in the folder `~/.ssh`
-  # Private key file has the words 'PRIVATE KEY' in the first line (e.g. id_ed25519)
+  # A private key and a public key will be created in the folder `~/.ssh`
+  # The private key file (e.g. id_ed25519) has the words 'PRIVATE KEY' in the first line
+  # Use ed25519 if supported, faster and better security
   ssh-keygen -t ed25519 -C "your_email@example.com"
   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
