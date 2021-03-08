@@ -29,12 +29,20 @@
 
 ## Error '419 | Page Expired' during login (possible solutions)
 
+* *Important* Set `.env::SESSION_DOMAIN=dev-admin.askthelawyers.com`, domain must be the same as the actual domain showing the login page
+
+* To verify whether session is behaving normally, `_token` in Debugbar Session tab should remain the same with page refresh
+
 * Quite likely exception is also thrown 'CSRF token mismatch.'
 
 * Checking request header, 'x-xsrf-token' header should be sent
 
 * Clear cache of browser
 
-* Set `.env::SESSION_DRIVER=file`
+* Clear all related cookies
 
-* Set `.env::SESSION_DOMAIN=dev-admin.askthelawyers.com`
+  * Firefox: Click on lock left of url, select `Clear Cookies and Site Data...`
+
+  * Chrome: Click on lock left of url, select `Cookies...`
+
+  * Edge: Click on lock left of url, select `Cookies...`
