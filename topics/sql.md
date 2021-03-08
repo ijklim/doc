@@ -1,48 +1,51 @@
-# SQL Commands
+# SQL Syntax
 
-## Setting variables
+```sql
+-- (MySQL) Show database users
+SELECT * FROM mysql.user;
 
-  ```sql
-  SET
-    @columnName = '',
-    @databaseName = '',
-    @tableName = ''
-  ;
-  ```
+-- (MySQL) Version info
+SHOW VARIABLES LIKE "%version%";
 
-## Tables in a database
+-- Setting variables
+SET
+  @columnName = '',
+  @databaseName = '',
+  @tableName = ''
+;
 
-  ```sql
-  SELECT TABLE_NAME FROM information_schema.tables
-  WHERE TABLE_SCHEMA = @databaseName;
-  ```
-## Find all tables with a specific column name
+-- List tables in a database
+SELECT TABLE_NAME FROM information_schema.tables
+WHERE TABLE_SCHEMA = @databaseName;
 
-  ```sql
-  SELECT DISTINCT TABLE_NAME
-  FROM INFORMATION_SCHEMA.COLUMNS
-  WHERE 1
-    AND COLUMN_NAME = @columnName
-    AND TABLE_SCHEMA = @databaseName
-  ;
-  ```
+-- Find all tables with a specific column name
+SELECT DISTINCT TABLE_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE 1
+  AND COLUMN_NAME = @columnName
+  AND TABLE_SCHEMA = @databaseName
+;
 
-## Update based on another table
+-- (MySQL) Update based on another table
+UPDATE
+  table1,
+  table2
+SET table1.column1 = table2.column2
+WHERE 1
+  AND table1.id = table2.id
+;
 
-  ```sql
-  -- MySQL
-  UPDATE
-    table1,
-    table2
-  SET table1.column1 = table2.column2
-  WHERE 1
-    AND table1.id = table2.id
-  ;
-  ```
+-- Find max length of data in a column
+SELECT MAX(LENGTH(@columnName))
+FROM @tableName;
+```
 
-## Find max length of data in a column
+## MySQL Cli Commands
 
-  ```sql
-  SELECT MAX(LENGTH(@columnName))
-  FROM @tableName;
-  ```
+```sh
+# Check MySQL version
+mysql -V
+
+# Restore database to a server
+mysql -h<host_name> -u<user_name> -p<password> <database_name> < <file_name>
+```
