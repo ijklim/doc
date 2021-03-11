@@ -6,6 +6,8 @@ Last updated on 3/5/21
 
 * <a href="./topics/git-commands.md">Git Commands</a>
 
+* <a href="./topics/laravel-database.md">Laravel Database Methods</a>
+
 * <a href="./topics/laravel-eloquent.md">Laravel Eloquent Query Builder Commands</a>
 
 * <a href="./topics/laravel-migration.md">Laravel Migration Script Methods</a>

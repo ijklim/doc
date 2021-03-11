@@ -6,6 +6,9 @@
 // Find by primary key `id`
 \App\Models\User::find(8)->toArray();
 
+// Retrieve a single row
+\App\Models\User::where('name', 'John')->first();
+
 // Where Null
 \App\Models\User::whereNull('user_name')->get()->toArray();
 
