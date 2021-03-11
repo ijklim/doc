@@ -10,6 +10,9 @@ find / -name *.so
 # List files with permission info
 ls -la /var/www
 
+# Find path of command
+which find
+
 # Show ip address of client connecting to server via SSH
 echo $SSH_CLIENT
 echo $SSH_CONNECTION

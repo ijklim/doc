@@ -8,4 +8,7 @@
 
 // Where Null
 \App\Models\User::whereNull('user_name')->get()->toArray();
+
+// Retrieve column data (name), with optional key field (id)
+\App\Models\User::pluck('name', 'id')->all();
 ```

@@ -9,14 +9,11 @@
 ```php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Post extends Model
+class Post extends \Illuminate\Database\Eloquent\Model
 {
     // Allows use of Post::factory()->make()
     // `database\factories\PostFactory.php` must be present
-    use HasFactory;
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
 
     /**
      * The primary key associated with the table.
@@ -24,6 +21,11 @@ class Post extends Model
      * @var string
      */
     protected $primaryKey = 'post_id';
+
+    /**
+     * Table has no timestamp fields `created_at` and `updated_at`
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -34,5 +36,31 @@ class Post extends Model
         'user_id',
         'content',
     ];
+
+    /**
+     * The attributes that are not mass assignable.
+     * Note: $guarded is the reverse of $fillable, use only one
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    // Post has one user
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
+    }
+
+    // Post has many comments
+    public function comments()
+    {
+        return $this->hasMany(\App\Models\Comment::class, 'comment_id');
+    }
+
+    // Many to many, e.g. user has many roles, roles shared by many users
+    public function roles()
+    {
+        return $this->belongsToMany(\App\Models\Role::class);
+    }
 }
 ```
