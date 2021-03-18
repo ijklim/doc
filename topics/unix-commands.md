@@ -4,6 +4,9 @@
 # Check OS
 cat /etc/issue
 
+# Check current user
+whoami
+
 # Find files
 find / -name *.so
 

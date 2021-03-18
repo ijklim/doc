@@ -72,3 +72,11 @@ class RegionSeeder extends Seeder
     }
 }
 ```
+
+```php
+// Color output
+$this->command->getOutput()->writeln("<comment>Seeder \<comment>!</comment>");
+$this->command->getOutput()->writeln("<error>Seeder \<error>!</error>");
+$this->command->getOutput()->writeln("<info>Seeder \<info>!</info>");
+$this->command->getOutput()->writeln("<question>Seeder \<question>!</question>");
+```

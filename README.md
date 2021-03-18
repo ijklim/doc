@@ -16,6 +16,8 @@ Last updated on 3/5/21
 
 * <a href="./topics/laravel-seeder.md">Laravel Seeder</a>
 
+* <a href="./topics/phpunit-assertions.md">PHPUnit Assertions</a>
+
 * <a href="./topics/troubleshoot-laravel.md">Laravel Troubleshooting Guide</a>
 
 * <a href="./topics/sql.md">SQL Syntax</a>
