@@ -23,6 +23,13 @@ class Post extends \Illuminate\Database\Eloquent\Model
     protected $primaryKey = 'post_id';
 
     /**
+     * Whether primary key auto increment. Affects primary key field value after `->save()`
+     *
+     * @var boolean
+     */
+    public $incrementing = false;
+
+    /**
      * Table has no timestamp fields `created_at` and `updated_at`
      */
     public $timestamps = false;

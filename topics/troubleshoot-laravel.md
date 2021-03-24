@@ -29,11 +29,13 @@
 
 ## Error '419 | Page Expired' during login (possible solutions)
 
-* *Important* Set `.env::SESSION_DOMAIN=dev-admin.askthelawyers.com`, domain must be the same as the actual domain showing the login page
+* *Important* Set `.env::SESSION_DOMAIN` and `.env::APP_URL`, domain must be the same as the actual domain showing the login page
+
+  * e.g. `SESSION_DOMAIN=dev-admin.askthelawyers.com`
 
 * To verify whether session is behaving normally, `_token` in Debugbar Session tab should remain the same with page refresh
 
-* Quite likely exception is also thrown 'CSRF token mismatch.'
+* Cause: Quite likely exception is also thrown 'CSRF token mismatch.'
 
 * Checking request header, 'x-xsrf-token' header should be sent
 
@@ -46,3 +48,38 @@
   * Chrome: Click on lock left of url, select `Cookies...`
 
   * Edge: Click on lock left of url, select `Cookies...`
+
+## Error 'Swift_TransportException Connection could not be established with host mailhog :stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known.'
+
+* Need to configure `MAIL_*` settings in `.env` file
+
+## Warning 'You are running the esm-bundler build of Vue. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.'
+
+* Configure `webpack.config.js`
+
+  ```js
+  const path = require('path');
+  const webpack = require('webpack');
+
+  module.exports = {
+      resolve: {
+          alias: {
+              '@': path.resolve('resources/js'),
+          },
+      },
+      plugins: [
+          new webpack.DefinePlugin({
+              __VUE_OPTIONS_API__: true,
+              __VUE_PROD_DEVTOOLS__: true,
+          }),
+      ],
+  };
+  ```
+
+## Warning 'DevTools failed to load SourceMap: Could not load content for...'
+
+* Configure `webpack.mix.js`
+
+  ```js
+  mix.js('resources/js/app.js', 'public/js').sourceMaps();
+  ```
