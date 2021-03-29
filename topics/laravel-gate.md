@@ -7,6 +7,8 @@
 * In `app/Providers/AuthServiceProvider.php`
 
 ```php
+use Illuminate\Support\Facades\Gate;
+
 public function boot()
 {
     $this->registerPolicies();
@@ -23,15 +25,17 @@ public function boot()
 
     // Runs before all other authorization checks
     Gate::before(function ($user, $ability) {
-    if ($user->isAdministrator()) {
-        return true;
-    }
+        if ($user->isAdministrator()) {
+            return true;
+        }
+    });
 
     // Runs after all other authorization checks
     Gate::after(function ($user, $ability, $result, $arguments) {
-    if ($user->isAdministrator()) {
-        return true;
-    }
+        if ($user->isAdministrator()) {
+            return true;
+        }
+    });
 }
 ```
 
