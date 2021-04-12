@@ -9,6 +9,9 @@
 // Retrieve a single row
 \App\Models\User::where('name', 'John')->first();
 
+// Where Like
+\App\Models\User::where('name', 'like', 'T%')->get();
+
 // Null (whereNull)
 \App\Models\User::whereNull('name')->get()->toArray();
 
@@ -20,4 +23,7 @@
 
 // Retrieve column data (name), with optional key field (id)
 \App\Models\User::pluck('name', 'id')->all();
+
+// Order By
+\App\Models\User::orderBy('name', 'DESC')->get();
 ```

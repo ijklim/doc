@@ -13,4 +13,7 @@ git branch -d <old_name>
 
 # Delete a remote branch
 git push origin --delete <old_name>
+
+# Initialize git with default branch <branch_name>
+git init -b <branch_name>
 ```

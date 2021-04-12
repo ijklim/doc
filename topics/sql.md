@@ -7,6 +7,9 @@ SELECT * FROM mysql.user;
 -- (MySQL) Version info
 SHOW VARIABLES LIKE "%version%";
 
+-- (MySQL) Show databases
+SHOW DATABASES;
+
 -- Setting variables
 SET
   @columnName = '',

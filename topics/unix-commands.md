@@ -22,6 +22,20 @@ echo $SSH_CONNECTION
 
 # Create log entry in /var/log/syslog
 logger 'a test message'
+
+# Show installed packages
+dpkg --get-selections
+
+# Restart apache server
+sudo apache2ctl configtest
+sudo apache2ctl restart
+
+# Check for new release
+sudo do-release-upgrade -d
+
+# Update packages
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade
 ```
 
 ## PHP related
