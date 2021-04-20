@@ -26,4 +26,10 @@
 
 // Order By
 \App\Models\User::orderBy('name', 'DESC')->get();
+
+// With relationship
+\App\Models\Role::with('users')->find(1)->get();
+
+// Get random data
+\App\Models\Role::inRandomOrder()->first();
 ```
