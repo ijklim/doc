@@ -6,6 +6,12 @@
 // Find by primary key `id`
 \App\Models\User::find(8)->toArray();
 
+// Get random data
+\App\Models\Role::inRandomOrder()->first();
+
+// Field selection
+\App\Models\User::select('id', 'email')->get();
+
 // Retrieve a single row
 \App\Models\User::where('name', 'John')->first();
 
@@ -28,8 +34,17 @@
 \App\Models\User::orderBy('name', 'DESC')->get();
 
 // With relationship
-\App\Models\Role::with('users')->find(1)->get();
+\App\Models\Role::with('users')->find(1);
 
-// Get random data
-\App\Models\Role::inRandomOrder()->first();
+// Load relationship after retrieval
+$role = \App\Models\Role::find(1);
+$role->load('users');
+
+// WhereHas
+$userName = 'Ivan';
+$role = \App\Models\Role::with('users');
+$role->whereHas('users', function ($query) use ($userName) {
+  $query->where('name', 'like', "%$userName%");
+});
+$role->get();
 ```

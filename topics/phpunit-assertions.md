@@ -8,6 +8,8 @@
 
 * Database Test Doc: https://laravel.com/docs/8.x/database-testing
 
+* Faker Doc: https://github.com/fzaninotto/Faker
+
 ```php
 $this->assertDatabaseHas('users', ['name' => 'Jane Doe']);
 $this->assertContains(8, [1, 2, 3]);

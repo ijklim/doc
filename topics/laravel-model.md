@@ -4,6 +4,8 @@
 
 * Model Class: https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
+* Validation: https://laravel.com/docs/8.x/validation
+
 * Command to create migration script with model: `php artisan make:model MySample -m`
 
   * Add `-f` to create a factory class as well
