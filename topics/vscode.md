@@ -7,3 +7,7 @@
 * `Window: Title`: ${dirty}${rootName}\${activeEditorMedium}
 
 * `Workbench › Editor: Wrap Tabs`: On
+
+## Search
+
+* Regex search example: `(tip: )(.)*(vertical)`

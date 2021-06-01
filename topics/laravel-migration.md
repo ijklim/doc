@@ -47,7 +47,7 @@ class CreateMySamplesTable extends Migration
         $this->down();
 
         Schema::create($this->getTableName(), function (Blueprint $table) {
-            $table->increments(substr($this->getTableName(), 0, -1) . '_id');
+            $table->increments(\Str::singular($this->getTableName()) . '_id');
 
             $table->boolean('completed')->default(false);
 

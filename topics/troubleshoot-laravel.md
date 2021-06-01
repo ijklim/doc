@@ -83,3 +83,7 @@
   ```js
   mix.js('resources/js/app.js', 'public/js').sourceMaps();
   ```
+
+## [Aws\Exception\CredentialsException] Error retrieving credentials from the instance profile metadata service.
+
+* `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in `.env` have not been set up or they are invalid

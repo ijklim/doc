@@ -14,6 +14,8 @@ Last updated on 3/5/21
 
 * <a href="./topics/laravel-gate.md">Laravel Gate Methods</a>
 
+* <a href="./topics/laravel-helpers.md">Laravel Helpers</a>
+
 * <a href="./topics/laravel-migration.md">Laravel Migration Script Methods</a>
 
 * <a href="./topics/laravel-model.md">Laravel Model</a>

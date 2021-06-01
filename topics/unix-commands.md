@@ -26,6 +26,12 @@ logger 'a test message'
 # Show installed packages
 dpkg --get-selections
 
+# Remove directory
+# -d for directory
+# -r for recursive
+# -f force
+rm -r <dir_name>
+
 # Restart apache server
 sudo apache2ctl configtest
 sudo apache2ctl restart

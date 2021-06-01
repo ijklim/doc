@@ -47,4 +47,7 @@ $role->whereHas('users', function ($query) use ($userName) {
   $query->where('name', 'like', "%$userName%");
 });
 $role->get();
+
+// Raw query
+\App\Models\Role::with('users')->toSql();
 ```
