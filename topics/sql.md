@@ -41,6 +41,11 @@ WHERE 1
 -- Find max length of data in a column
 SELECT MAX(LENGTH(@columnName))
 FROM @tableName;
+
+-- (MySQL) Find and create DROP TRIGGER statements for all triggers from a database
+SELECT CONCAT('DROP TRIGGER ', Trigger_Name, ';')
+FROM information_schema.TRIGGERS
+WHERE TRIGGER_SCHEMA = @databaseName;
 ```
 
 ## MySQL Cli Commands

@@ -32,4 +32,6 @@ Last updated on 3/5/21
 
 * <a href="./topics/unix-commands.md">Unix Commands</a>
 
+* <a href="./topics/vi-commands.md">Vi Commands</a>
+
 * <a href="./topics/vscode.md">Visual Studio Code Tips and Tricks</a>

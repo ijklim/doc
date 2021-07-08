@@ -9,6 +9,8 @@ whoami
 
 # Find files
 find / -name *.so
+# Changed in the last day
+find /var/www/html -mtime -1 -ls
 
 # List files with permission info
 ls -la /var/www
