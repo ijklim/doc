@@ -6,6 +6,8 @@
 
 * Validation: https://laravel.com/docs/8.x/validation
 
+* Tables are defined in repo `/web/laravel/laravel-doc`
+
 * Command to create migration script with model: `php artisan make:model MySample -m`
 
   * Add `-f` to create a factory class as well
@@ -56,22 +58,59 @@ class Post extends \Illuminate\Database\Eloquent\Model
      */
     protected $guarded = [];
 
-    // Post has one user
-    public function user()
-    {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
-    }
 
     // Post has many comments
     public function comments()
     {
-        return $this->hasMany(\App\Models\Comment::class, 'comment_id');
+        return $this->hasMany(
+            Comment::class,
+            'post_id',                      // Foreign key to Post in Comment
+            'id'                            // Primary key in Post
+        );
     }
 
-    // Many to many, e.g. user has many roles, roles shared by many users
-    public function roles()
+    // Post has one post_info
+    public function postInfo()
     {
-        return $this->belongsToMany(\App\Models\Role::class);
+        return $this->hasOne(
+            PostInfo::class,
+            'post_id',                      // Foreign key to Post in PostInfo
+            'id'                            // Primary key in Post
+        );
+    }
+
+    // Post has many post_info_details through post_info
+    public function postInfoDetails()
+    {
+        return $this->hasManyThrough(
+            PostInfoDetail::class,          // Final model
+            PostInfo::class,                // Intermediate model
+            'post_id',                      // Foreign key to Post on PostInfo
+            'post_info_id',                 // Foreign key to PostInfo on PostInfoDetail
+            'id',                           // Primary key on Post
+            'id',                           // Primary key on PostInfo
+        );
+    }
+
+    // Many to many, e.g. post has many tags, tags shared by many posts
+    public function tags()
+    {
+        return $this->belongsToMany(
+            \App\Models\Tag::class,
+            'post_tag',                     // Intermediate pivot table
+            'post_id',                      // Foreign key to Post in table `post_tag`
+            'tag_id'                        // Foreign key to Tag in table `post_tag`
+        );
+    }
+
+    // Post has one user
+    public function user()
+    {
+        return $this->belongsTo(
+            User::class,
+            'user_id',                      // Foreign key to User in Post
+            'id'                            // Primary key in User
+        );
     }
 }
 ```
