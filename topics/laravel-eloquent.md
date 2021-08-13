@@ -16,14 +16,19 @@
 
 // Retrieve a single row
 \App\Models\User::where('name', 'John')->first();
-// Where Like
+// Like
 \App\Models\User::where('name', 'like', 'T%')->get();
-// Null (whereNull)
+// Null (whereNull), Not Null (whereNotNull)
 \App\Models\User::whereNull('name')->get()->toArray();
 // In (whereIn), Not In (whereNotIn)
 \App\Models\User::whereIn('name', ['Jon', 'Skye'])->get()->toArray();
 // Custom where clause
 \App\Models\User::whereRaw('id > IF(name = "Smith", 10, 2)')->get()->toArray();
+// Custom function (useful as Or wrapper), with Or condition
+\App\Models\User::where(function ($query) {
+  return $query->where('name', 'JJ')->orWhere('name', 'KK');
+})->get()->toArray();
+
 
 // Retrieve column data (name), with optional key field (id)
 \App\Models\User::pluck('name', 'id')->all();
