@@ -9,4 +9,7 @@
 
 # Save and Quit
 :wq
+
+# Abandon changes and Quit
+:qa
 ```
