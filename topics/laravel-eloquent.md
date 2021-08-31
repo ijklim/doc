@@ -30,6 +30,13 @@
 })->get()->toArray();
 
 
+// Max, Min, Sum, Avg, count
+\App\Models\User::max('created_at');
+\App\Models\User::min('created_at');
+\App\Models\User::sum('id');
+\App\Models\User::avg('id');              // Average of non null values, including 0
+\App\Models\User::count('updated_by');    // Will only count non null values
+
 // Retrieve column data (name), with optional key field (id)
 \App\Models\User::pluck('name', 'id')->all();
 
