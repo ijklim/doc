@@ -12,6 +12,10 @@
 
   * Add `-f` to create a factory class as well
 
+* To create a model instance using factory: `\App\Post::factory()->make()`;
+
+  * Create and save in table: `\App\Post::factory()->create()`
+
 ```php
 namespace App\Models;
 

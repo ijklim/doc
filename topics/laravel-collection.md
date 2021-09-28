@@ -13,4 +13,7 @@ $results = collect(['apple', 'banana', 'cherry'])
   ->toArray();
 
 print_r($results);
+
+# Another example
+$results = collect(['php', 'vue', 'laravel'])->random(2)->values()->all();
 ```

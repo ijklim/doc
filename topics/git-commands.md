@@ -22,6 +22,13 @@ git init -b <branch_name>
 
 # Display git configurations
 git config -l
+git config --global -l
+
+# Credentials
+git config --global --unset-all credential.helper
+git config --global --unset credential.helper
+## 3600 = 60 * 60 = 1 hour
+git config --global credential.helper "cache --timeout=3600"
 ```
 
 # Git Setup

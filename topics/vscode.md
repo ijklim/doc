@@ -4,9 +4,12 @@
 
 * `Editor: Linked Editing`: On
 
+* `Editor: Bracket Pair Colorization`: On
+
 * `Window: Title`: ${dirty}${rootName}\${activeEditorMedium}
 
 * `Workbench › Editor: Wrap Tabs`: On
+
 
 ## Search
 

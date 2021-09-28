@@ -16,6 +16,8 @@
 
 // Retrieve a single row
 \App\Models\User::where('name', 'John')->first();
+// Limit number of rows returned (`query()` is optional)
+\App\Models\User::query()->limit(2)->get();
 // Like
 \App\Models\User::where('name', 'like', 'T%')->get();
 // Null (whereNull), Not Null (whereNotNull)
@@ -28,6 +30,12 @@
 \App\Models\User::where(function ($query) {
   return $query->where('name', 'JJ')->orWhere('name', 'KK');
 })->get()->toArray();
+
+// Conditional clause
+$roleId = null;
+\App\Models\User::when($roleId, function ($query, $roleId) {
+    return $query->where('role_id', $roleId);
+})->get();
 
 
 // Max, Min, Sum, Avg, count
