@@ -3,9 +3,18 @@
 ```sh
 # Check OS
 cat /etc/issue
+# Apache version check
+apache2ctl -v
 
 # Check current user
 whoami
+# Show user accounts
+cat /etc/passwd
+# Simulate superuser
+sudo -i
+su
+# Show server date and time
+date
 
 # Find files
 find / -name *.so
@@ -14,6 +23,16 @@ find /var/www/html -mtime -1 -ls
 
 # List files with permission info
 ls -la /var/www
+
+# Copy file from remote to local
+scp <username>@<host>:<remote-filepath> <local-filepath>
+# e.g. scp ubuntu@example.com:~/tmp/backup.sql.gz ~/Documents/backup/
+
+# Remove directory
+# -d for directory
+# -r for recursive
+# -f force
+rm -r <dir_name>
 
 # Find path of command
 which find
@@ -28,12 +47,6 @@ logger 'a test message'
 # Show installed packages
 dpkg --get-selections
 
-# Remove directory
-# -d for directory
-# -r for recursive
-# -f force
-rm -r <dir_name>
-
 # Restart apache server
 sudo apache2ctl configtest
 sudo apache2ctl restart
@@ -44,6 +57,20 @@ sudo do-release-upgrade -d
 # Update packages
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade
+
+# List user specific cronjob/crontab
+sudo ls -l /var/spool/cron/crontabs
+# Show what is in crontab
+sudo cat /var/spool/cron/crontabs/root
+sudo cat /var/spool/cron/crontabs/ubuntu
+
+# List services controlled by `System V`
+service --status-all
+# Check specific service
+service php7.4-fpm status
+systemctl status php7.4-fpm.service
+# Restart a service
+sudo systemctl restart php7.4-fpm.service
 ```
 
 ## PHP related
@@ -59,10 +86,15 @@ php -i | grep extension_dir
 ### Clean up log folder
 
 ```sh
-sudo chmod 777 /var/log/apache2
-mkdir /var/log/apache2/archive
-# Move files older than 8/1/21 into folder
-sudo chmod 750 /var/log/apache2
+# Change permission of file
+sudo chmod 777 /var/log/apache2/error.log
+# Change permission of folders
+sudo chmod -R 775 /var/log/apache2 /var/log/apache2/cache
+# Change file ownership
+sudo chown ubuntu /var/log/apache2/error.log
+
+# Find files older than a certain time
+sudo find . -maxdepth 1 -type f -mtime +7
 ```
 
 ### Enable mods-available for edit
@@ -78,7 +110,7 @@ sudo chmod 755 /etc/apache2/mods-enabled
 
 ### Error: Config variable ${APACHE_RUN_DIR} is not defined. apache2: Syntax error on line 83 of /etc/apache2/apache2.conf: DefaultRuntimeDir must be a valid directory, absolute or relative to ServerRoot
 
-* Solution: `source /etc/apache2/envvars`
+* Solution: Run `source /etc/apache2/envvars`
 
 * Verification: apache2 -S
 

@@ -14,3 +14,10 @@
 ## Search
 
 * Regex search example: `(tip: )(.)*(vertical)`
+
+
+## Shortcuts
+
+* Split editor: CTRL+K CTRL+SHIFT+\
+
+* Jump to code block wrapper start and end: CTRL+SHIFT+\

@@ -87,3 +87,27 @@
 ## [Aws\Exception\CredentialsException] Error retrieving credentials from the instance profile metadata service.
 
 * `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in `.env` have not been set up or they are invalid
+
+## PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes)
+
+* Occurs when attempting to run `php artisan route:list`
+
+* Increase `memory_limit` setting in `php.ini`, use `phpinfo()` to determine where the `php.ini` file is located
+
+* Command line php and the one used by Laravel might be different, if using xampp, might need to specify path (e.g. `c:/xampp/php-7.4/php artisan route:list`)
+
+
+## Target class [Database\Seeders\ConfigurationSeeder] does not exist.
+
+* Configure `composer.json`
+
+  ```json
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  ```
+
+* Run `composer dump-autoload`

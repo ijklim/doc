@@ -1,14 +1,45 @@
-# SQL Syntax
+# SQL
+
+* XAMPP Replacing MariaDB with MySQL: https://odan.github.io/2019/11/17/xampp-replacing-mariadb-with-mysql-8.html
+## SQL Commands
 
 ```sql
--- (MySQL) Show database users
-SELECT * FROM mysql.user;
-
--- (MySQL) Version info
+-----------
+-- MySQL --
+-----------
+-- Version info
 SHOW VARIABLES LIKE "%version%";
+SELECT VERSION();
 
--- (MySQL) Show databases
+-- Show database users
+SELECT * FROM mysql.user;
+-- Create user
+CREATE USER 'admin'@'%' IDENTIFIED WITH caching_sha2_password BY 'db_password_here';
+-- Change password
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'PASSWORD_HERE';
+-- Permission
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- Show databases
 SHOW DATABASES;
+-- Create database
+CREATE DATABASE <DATABASE_NAME> CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Find and create DROP TRIGGER statements for all triggers from a database
+SELECT CONCAT('DROP TRIGGER ', Trigger_Name, ';')
+FROM information_schema.TRIGGERS
+WHERE TRIGGER_SCHEMA = @databaseName;
+
+-- Update based on another table
+UPDATE
+  table1,
+  table2
+SET table1.column1 = table2.column2
+WHERE 1
+  AND table1.id = table2.id
+;
+
 
 -- Setting variables
 SET
@@ -29,23 +60,12 @@ WHERE 1
   AND TABLE_SCHEMA = @databaseName
 ;
 
--- (MySQL) Update based on another table
-UPDATE
-  table1,
-  table2
-SET table1.column1 = table2.column2
-WHERE 1
-  AND table1.id = table2.id
-;
-
 -- Find max length of data in a column
 SELECT MAX(LENGTH(@columnName))
 FROM @tableName;
 
--- (MySQL) Find and create DROP TRIGGER statements for all triggers from a database
-SELECT CONCAT('DROP TRIGGER ', Trigger_Name, ';')
-FROM information_schema.TRIGGERS
-WHERE TRIGGER_SCHEMA = @databaseName;
+-- IF statement
+SELECT IF(orders.date_entered > '2021-08-08', 1, 0) AS recent FROM orders;
 ```
 
 ## MySQL Cli Commands

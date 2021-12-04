@@ -20,7 +20,7 @@
 \App\Models\User::query()->limit(2)->get();
 // Like
 \App\Models\User::where('name', 'like', 'T%')->get();
-// Null (whereNull), Not Null (whereNotNull)
+// Null (whereNull), Not Null (whereNotNull), orWhereNull
 \App\Models\User::whereNull('name')->get()->toArray();
 // In (whereIn), Not In (whereNotIn)
 \App\Models\User::whereIn('name', ['Jon', 'Skye'])->get()->toArray();

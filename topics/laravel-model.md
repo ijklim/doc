@@ -118,3 +118,12 @@ class Post extends \Illuminate\Database\Eloquent\Model
     }
 }
 ```
+
+# Creation through relationships
+
+```php
+// 1 to many
+$post->postInfoDetails()->create[
+    'notes' => 'Very important notes',
+];
+```

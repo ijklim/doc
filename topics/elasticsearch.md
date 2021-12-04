@@ -1,8 +1,55 @@
 # Elastic Search
 
+* Field types:
+  * `Text`: full-text searches
+  * `Keyword`: exact searches, aggregations, sorting
+
+## Mapping Examples
+
+* To create a new index: PUT http://<ElasticSearchServer>/<index>
+
+```json
+{
+  "mappings": {
+    // === runtime field
+    "runtime": {
+      "double_age": {
+        "type": "double",
+        "script": {
+          "source": "emit(doc['age'].value * 2)"
+        }
+      }
+    },
+    "properties": {
+      "age": {
+        "type": "long"
+      },
+      "type": {
+        "type": "keyword"
+      },
+      "description": {
+        "type": "text"
+      },
+      "color": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "created_at": {
+        "enabled": false            // Do not create inverted index or doc values for this field
+      }
+    }
+  }
+}
+```
+
 ## Query Examples
 
-* Url: http://<ElasticSearchServer>/<index>/_search
+* To perform a search: GET http://<ElasticSearchServer>/<index>/_search
 
 ```json
 // Examples of json body
@@ -85,7 +132,7 @@
         "field": "OriginCityName"
       }
     },
-    "sum_active": {     // Look for results under `aggregations.sum_active` instead of `hits`
+    "sum_active": {                   // Look for results under `aggregations.sum_active` instead of `hits`
       // "avg": {
       "sum": {
         "field": "is_active"
@@ -99,7 +146,7 @@
     },
     "stats_active": {
       "stats": {
-        "field": "is_active"
+        "field": "is_active"          // Can be a runtime field
       }
     },
     "unique_ips": {

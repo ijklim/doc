@@ -9,11 +9,20 @@ $results = collect(['apple', 'banana', 'cherry'])
   })
   ->reject(function ($val) {
       return $val > 'B';
-  })
-  ->toArray();
+  });
 
-print_r($results);
+// Convert to array
+$a = $results->toArray();
+// Get only fixed number of rows
+$b = $results->take(2);
+//
 
-# Another example
+// Another example
 $results = collect(['php', 'vue', 'laravel'])->random(2)->values()->all();
+
+// hasAny
+echo collect(['first' => 'Hello', 'second' => 'World'])->hasAny(['first', 'fourth']);   // Match key only, case sensitive
+
+// Search in collection
+\App\Models\User::all()->firstWhere('name', 'Ivan Lim');
 ```

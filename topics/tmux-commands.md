@@ -39,3 +39,5 @@
 ## Create new session
 
 * `tmux new -s <session-name>`
+
+* e.g. `tmux new -s repos`

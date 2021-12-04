@@ -29,6 +29,14 @@ git config --global --unset-all credential.helper
 git config --global --unset credential.helper
 ## 3600 = 60 * 60 = 1 hour
 git config --global credential.helper "cache --timeout=3600"
+
+# Search git commit messages
+git log --oneline | grep <PATTERN>
+e.g. git log --online | grep "min age"
+
+# Compare branches
+git diff branch1..branch2
+git log branch1..branch2
 ```
 
 # Git Setup
